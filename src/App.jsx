@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Player from "./components/Player";
+import GameBoard from "./components/GameBoard";
 
 function App() {
   const [p1Name, setP1Name] = useState("Player 1");
@@ -19,7 +20,7 @@ function App() {
             setPlayerName={setP2Name}
           />
         </ol>
-        GAME BOARD
+        <GameBoard />
       </div>
     </main>
   );
