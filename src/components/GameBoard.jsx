@@ -19,11 +19,13 @@ export default function GameBoard() {
   const [currentPlayer, setCurrentPlayer] = useState("P1");
 
   function handleCellClicked(rowIndex, columnIndex) {
-    gridState[rowIndex][columnIndex] = currentPlayer == "P1" ? "X" : "O";
-    setGridState(gridState);
-    setCurrentPlayer((player) => {
-      return player == "P1" ? "P2" : "P1";
-    });
+    if (gridState[rowIndex][columnIndex] == null) {
+      gridState[rowIndex][columnIndex] = currentPlayer == "P1" ? "X" : "O";
+      setGridState(gridState);
+      setCurrentPlayer((player) => {
+        return player == "P1" ? "P2" : "P1";
+      });
+    }
   }
 
   return (
