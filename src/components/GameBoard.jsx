@@ -22,12 +22,14 @@ export default function GameBoard() {
 
   function handleCellClicked(rowIndex, columnIndex) {
     if (gridState[rowIndex][columnIndex] === null) {
-      gridState[rowIndex][columnIndex] = currentPlayer === "P1" ? "X" : "O";
-      setGridState(gridState);
+      const gridCopy = [...gridState.map((gridRow) => [...gridRow])];
+      console.log(gridCopy)
+      gridCopy[rowIndex][columnIndex] = currentPlayer === "P1" ? "X" : "O";
+      setGridState(gridCopy);
       setCurrentPlayer((player) => {
         return player === "P1" ? "P2" : "P1";
       });
-      const evaluatedWinner = evaluateWinner(gridState, rowIndex, columnIndex);
+      const evaluatedWinner = evaluateWinner(gridCopy, rowIndex, columnIndex);
       evaluateWinner ? setWinner(evaluatedWinner) : null;
       console.log(evaluatedWinner + " is winner!!!");
     }
